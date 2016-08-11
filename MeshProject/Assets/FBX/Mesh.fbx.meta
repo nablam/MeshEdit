@@ -1,7 +1,7 @@
 fileFormatVersion: 2
-guid: 68f13840fb35f9d42a78f4f8a5edc82f
-timeCreated: 1470846032
-licenseType: Pro
+guid: 1dba072f2a98acf48aa885466578ebda
+timeCreated: 1470872526
+licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
@@ -10,6 +10,7 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: aMEsh
+    4300002: Suzanne
   materials:
     importMaterials: 1
     materialName: 0

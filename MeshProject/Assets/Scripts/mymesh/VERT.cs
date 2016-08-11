@@ -5,20 +5,22 @@ namespace mymesh
     public class VERT
     {
 
-        public int _my_TriIndex;
-        public int _my_VertsIndex; // this is the value at _triangles[_my_TriIndex]  and the indev of _Vert["this"] 
-        public Vector3 _my_VertsValue;
+        public int _Ti;
+        public int _Tv;
+        public int _Vi; // this is the value at _triangles[_my_TriIndex]  and the indev of _Vert["this"] 
+        public Vector3 _Vv;
 
-        public VERT(int triNdx, int vertNdx, Vector3 vertVal)
+        public VERT(int triNdx, int triV, int vertNdx, Vector3 vertVal)
         {
-            _my_TriIndex = triNdx;
-            _my_VertsIndex = vertNdx;
-            _my_VertsValue = vertVal;
+            _Ti = triNdx;
+            _Tv = triV;
+            _Vi = vertNdx;
+            _Vv = vertVal;
         }
 
         public override string ToString()
         {
-            return "{v_triNdx=" + _my_TriIndex + "|" + "Vndx=" + _my_VertsIndex + "|[" + _my_VertsValue +  "]}" ;
+            return "{v_triNdx=" + _Ti + "|"+_Tv + "Vndx=" + _Vi + "|[" + _Vv +  "]}" ;
         }
     }
 }
