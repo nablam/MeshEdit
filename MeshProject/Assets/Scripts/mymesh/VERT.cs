@@ -9,6 +9,7 @@ namespace mymesh
         public int _Tv;
         public int _Vi; // this is the value at _triangles[_my_TriIndex]  and the indev of _Vert["this"] 
         public Vector3 _Vv;
+       
 
         public VERT(int triNdx, int triV, int vertNdx, Vector3 vertVal)
         {

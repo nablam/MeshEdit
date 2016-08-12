@@ -58,12 +58,6 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -72,7 +66,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Math3d.cs" />
     <Compile Include="Assets\Scripts\mymesh\MeshExt.cs" />
+    <Compile Include="Assets\Scripts\mymesh\PLANE.cs" />
+    <Compile Include="Assets\Scripts\mymesh\SegmentDrawing.cs" />
     <Compile Include="Assets\Scripts\mymesh\TRI.cs" />
     <Compile Include="Assets\Scripts\mymesh\TRImanager.cs" />
     <Compile Include="Assets\Scripts\mymesh\VERT.cs" />
