@@ -24,9 +24,9 @@ namespace mymesh {
             _normals = aMEsh.normals.ToList();
             Init_TRILIST();
 
-            Debug.Log("Ts " + aMEsh.triangles.Count());
+           // Debug.Log("Ts " + aMEsh.triangles.Count());
             Debug.Log("Vs " + aMEsh.vertices.Count());
-            Debug.Log("Ns " + aMEsh.normals.Count());
+           // Debug.Log("Ns " + aMEsh.normals.Count());
            // foreach (Vector3 n in aMEsh.normals) { Debug.Log("norm " + n); }
 
         }
@@ -66,8 +66,8 @@ namespace mymesh {
         {
             Debug.Log("ok" + x);
             TRI thetri = _TRILIST.Find(e => e.id == x);
-            Vector3 temp1 = (thetri._V2._Vv + thetri._V1._Vv) / 2;
-            Vector3 temp2 = (temp1 + thetri._V3._Vv) / 2;
+            Vector3 temp1 = (thetri._V1._Vv + thetri._V0._Vv) / 2;
+            Vector3 temp2 = (temp1 + thetri._V2._Vv) / 2;
             Debug.Log(temp2);
 
 
@@ -79,9 +79,10 @@ namespace mymesh {
             foreach (TRI tri in _TRILIST) tri.Draw_mynormal();
         }
 
-        public void DrawIntersection(Vector3 p2NormalZero, Vector3 p_pos) {
+        public void DrawIntersection(Vector3 p2NormalZero, GameObject P1) {
             foreach (TRI tri in _TRILIST) {
-                tri.Draw_Plane_segment_intersection(p2NormalZero, p_pos);
+                //  tri.Draw_Plane_segment_intersection(p2NormalZero, p_pos);
+                tri.DoAllIntersects_aandDraw(p2NormalZero, P1);
             }
         }
 
@@ -121,9 +122,9 @@ namespace mymesh {
             foreach (TRI tri in _TRILIST)
             {
 
-                Debug.Log("["+tri._V1._Ti+","+ tri._V1._Tv+"]");
+                Debug.Log("["+tri._V0._Ti+","+ tri._V0._Tv+"]");
+                Debug.Log("[" + tri._V1._Ti + "," + tri._V1._Tv + "]");
                 Debug.Log("[" + tri._V2._Ti + "," + tri._V2._Tv + "]");
-                Debug.Log("[" + tri._V3._Ti + "," + tri._V3._Tv + "]");
 
             }
         }

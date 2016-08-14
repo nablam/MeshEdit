@@ -58,22 +58,22 @@ namespace mymesh {
         }
 
         Vector3 getMid12(TRI tri) {
-            return (tri._V1._Vv + tri._V2._Vv) / 2;
+            return (tri._V0._Vv + tri._V1._Vv) / 2;
         }
 
         Vector3 getMid23(TRI tri)
         {
-            return (tri._V3._Vv + tri._V2._Vv) / 2;
+            return (tri._V2._Vv + tri._V1._Vv) / 2;
         }
    
         void DrawIntersectionLine(GameObject GO) {
-
+            Debug.Log("dyoyo");
             Vector3 pos = GO.transform.position;
             //drawnormal of plane
 
             Vector3 planeNormal = pscript.PlaneNormal;
             // Debug.DrawLine(Vector3.zero, planeNormal, Color.grey, 10);
-            triMangr.DrawIntersection(planeNormal, pos);
+            triMangr.DrawIntersection(planeNormal, GO);
 
 
 
