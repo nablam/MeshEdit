@@ -15,9 +15,9 @@ namespace mymesh {
         public int CNTTRI = 0;
 
         //CONSTRUCTOR***************************************
-        public TRImanager(Mesh aMEsh, bool isSmooth) {
+        public TRImanager(Mesh aMEsh, bool isSmooth, GameObject go) {
             _isSmooth = isSmooth;
-            Debug.Log("manager started");
+            Debug.Log("manager started on "+go.name);
             _TRILIST = new List<TRI>();
             _trianglesList = aMEsh.triangles.ToList();
             _verteciesList = aMEsh.vertices.ToList();

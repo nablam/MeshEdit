@@ -67,12 +67,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Math3d.cs" />
+    <Compile Include="Assets\Scripts\UIscript\EmptyUiScript.cs" />
+    <Compile Include="Assets\Scripts\meshsplit\MeshObjectManager.cs" />
+    <Compile Include="Assets\Scripts\meshsplit\TriVert.cs" />
+    <Compile Include="Assets\Scripts\meshsplit\Triangle.cs" />
+    <Compile Include="Assets\Scripts\meshsplit\TriangleManager.cs" />
     <Compile Include="Assets\Scripts\mymesh\MeshExt.cs" />
     <Compile Include="Assets\Scripts\mymesh\PLANE.cs" />
     <Compile Include="Assets\Scripts\mymesh\SegmentDrawing.cs" />
     <Compile Include="Assets\Scripts\mymesh\TRI.cs" />
     <Compile Include="Assets\Scripts\mymesh\TRImanager.cs" />
     <Compile Include="Assets\Scripts\mymesh\VERT.cs" />
+    <Compile Include="Assets\Scripts\nabDrawHelper.cs" />
+    <Compile Include="Assets\Scripts\nabFileWriter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

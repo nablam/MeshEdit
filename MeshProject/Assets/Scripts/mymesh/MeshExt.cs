@@ -29,7 +29,7 @@ namespace mymesh {
         void Awake()
         {
             _mesh = GetComponent<MeshFilter>().mesh;    
-            triMangr = new TRImanager(_mesh, false); //false for is Smooth . if not smooth then there are 3 normals per triangle. if smooth, shit gets tough since shared verteces share a normal too
+            triMangr = new TRImanager(_mesh, false, this.gameObject); //false for is Smooth . if not smooth then there are 3 normals per triangle. if smooth, shit gets tough since shared verteces share a normal too
             pscript = P1.GetComponent<PLANE>();
         }
 
@@ -74,11 +74,8 @@ namespace mymesh {
             Vector3 planeNormal = pscript.PlaneNormal;
             // Debug.DrawLine(Vector3.zero, planeNormal, Color.grey, 10);
             triMangr.DrawIntersection(planeNormal, GO);
-
-
-
-
         }
+
         //transform.InverseTransformDirection(transform.position.
 
 
