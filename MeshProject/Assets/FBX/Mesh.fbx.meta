@@ -8,17 +8,24 @@ ModelImporter:
     100000: //RootNode
     100002: aMEsh
     100004: Suzanne
+    100006: aMEsh.001
     400000: //RootNode
     400002: aMEsh
     400004: Suzanne
+    400006: aMEsh.001
     2300000: //RootNode
     2300002: aMEsh
     2300004: Suzanne
+    2300006: aMEsh.001
     3300000: //RootNode
     3300002: aMEsh
     3300004: Suzanne
+    3300006: aMEsh.001
     4300000: aMEsh
     4300002: Suzanne
+    4300004: aMEsh.001
+    4300006: aMEsh.002
+    4300008: Plane
   materials:
     importMaterials: 1
     materialName: 0

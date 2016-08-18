@@ -4,12 +4,13 @@ namespace meshsplit {
     public class TriVert 
     {
         public Vector3 VV;
-        public char LR;
+        public char LRO;
         public int HashCode;
 
-        int Feild = 2000000000;
+        //int Feild = 2000000000;
+        int Feild = 10000;
 
-        public TriVert(Vector3 vv, char lr) { VV = vv; LR = lr; HashCode =this.GetHashCode(); }
+        public TriVert(Vector3 vv, char lro) { VV = vv; LRO = lro; HashCode =this.GetHashCode(); }
 
         public override int GetHashCode()
         {
@@ -30,12 +31,13 @@ namespace meshsplit {
             else
                 v3 = (int)VV.z * 11 + (int)VV.x * 5;
 
-            return  (Mathf.Abs(v1*v2*v3)*(int)LR)% Feild;
+            //return  (Mathf.Abs(v1*v2*v3)*(int)LR)% Feild;
+            return (Mathf.Abs(v1 * v2 * v3) ) % Feild;
         }
 
         public override string ToString()
         {
-            return "{v=" + VV + "|" + LR +"}";
+            return "{v=" + VV + "|" + LRO +"}"+ GetHashCode().ToString();
         }
     }
 }

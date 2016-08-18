@@ -3,12 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using meshsplit;
 
 public static class nabFileWriter {
 
-   public static void writeMesh(Mesh aMesh)
+    public static void writeMesh(Mesh aMesh)
     {
-        string[] TriTitle = { "_triangles :",aMesh.triangles.Length.ToString() };
+        string[] TriTitle = { "_triangles :", aMesh.triangles.Length.ToString() };
         System.IO.File.WriteAllLines(@"C:\UnityLogs\Mesh_trianges.txt", TriTitle);
         using (System.IO.StreamWriter TriWriter =
         new System.IO.StreamWriter(@"C:\UnityLogs\Mesh_trianges.txt", true))
@@ -89,5 +90,38 @@ public static class nabFileWriter {
                 TriWriter.WriteLine(s);
         }
 
+    }
+
+
+    public static void Write_TriInfo(List<Triangle> _triList, string ext) {
+
+        string path = @"C:\UnityLogs\_TRISinfo"+ext+ ".txt";
+
+        string s1 = " ALL TRI : count=" + _triList.Count.ToString();
+        string s2 = " ObjL    : count=" + _triList.Where(e => e.obj_L_R_OP_X == 'L').Select(e => e).Count().ToString();
+        string s3 = " ObjR    : count=" + _triList.Where(e => e.obj_L_R_OP_X == 'R').Select(e => e).Count().ToString();
+        string s4 = " onPath  : count=" + _triList.Where(e => e.obj_L_R_OP_X == 'O').Select(e => e).Count().ToString();
+        // string s4 = " onPath  : count=" + _triList.Where(e => e.IsOnCutPath).Select(e => e).Count().ToString();
+
+
+        string[] Lines = { s1, s2, s3, s4, "\n" };
+        System.IO.File.WriteAllLines(path, Lines);
+        using (System.IO.StreamWriter TriWriter =
+        new System.IO.StreamWriter(path, true))
+        {
+            foreach (Triangle t in _triList) {
+                TriWriter.WriteLine("MAIN TRI="+t.ToString());
+                TriWriter.WriteLine("----------------");
+                TriWriter.WriteLine(t.T0 == null ? "noT0" : t.T0.ToString());
+                TriWriter.WriteLine(t.T1 == null ? "noT1" : t.T1.ToString());
+                TriWriter.WriteLine(t.T2 == null ? "noT2" : t.T2.ToString());
+                TriWriter.WriteLine("##########################");
+                
+
+
+        }
+            // foreach (string s in _triList.Select(t => t.ToString()).ToArray())
+            //     TriWriter.WriteLine(s);
+        }
     }
 }
