@@ -26,6 +26,7 @@ ModelImporter:
     4300004: aMEsh.001
     4300006: aMEsh.002
     4300008: Plane
+    4300010: Cylinder
   materials:
     importMaterials: 1
     materialName: 0

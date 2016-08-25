@@ -20,21 +20,12 @@ namespace meshsplit
             _verteciesList = aMEsh.vertices.ToList();
             _normals = aMEsh.normals.ToList();
             _P1 = p1;
-//  nabFileWriter.writeMesh(aMEsh);
             Init_TRILIST();
-
 
             Build_vertList_from_TRILIST();
             Build_triangleList_fromTRILIST();
 
-//  nabFileWriter.Write_TriInfo(_TRILIST, "precut");
-
-//  nabFileWriter.GenericWriter(_trianglesList);
-//  nabFileWriter.GenericWriter(_verteciesList);
-//  nabFileWriter.writeMeshNormals(aMEsh);
-
         }
-
 
 
         void Init_TRILIST()
@@ -59,11 +50,7 @@ namespace meshsplit
                    
                 }
                 Triangle aTRI = new Triangle(idCnt, VERTarra, _P1);
-                //Debug.Log(idCnt);
-
-                // aTRI._myNormal = _normals[idCnt% _normals.Count];
                 aTRI._myNormal = _normals[idCnt/3];
-
                 _TRILIST.Add(aTRI);
             }
         }
@@ -107,21 +94,14 @@ namespace meshsplit
 
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
+
         public void Set_TRILIST_intersects() {
             foreach (Triangle t in _TRILIST) { t.SetIntersects(); }
         }
 
         public List<Triangle> Get_TRILIST() { return this._TRILIST; }
 
-        //public List<Vector3> find_all_RightOfPlane() {
-        //    Vector3 p1Normal = _P1.GetComponent<PLANE>().PlaneNormal;        
-        //    return _verteciesList.Select(e => e).Where(v => Vector3.Dot(v-_P1.transform.position, p1Normal) > 0.0f).ToList(); 
-        //}
-
-        public void Sel_LRonly_no_O() {
+        public void Set_LRonly_no_O() {
             Vector3 p1Normal = _P1.GetComponent<PLANE>().PlaneNormal;
             foreach (Triangle t in _TRILIST)
             {
@@ -136,7 +116,7 @@ namespace meshsplit
 
         public List<Triangle> find_all_RightOfPlane_fromTRILIST()
         {
-            Sel_LRonly_no_O();
+            Set_LRonly_no_O();
             List<Triangle> temp_TRI = new List<Triangle>();
             foreach (Triangle t in _TRILIST)
             {       
@@ -146,24 +126,6 @@ namespace meshsplit
 
             return temp_TRI;
         }
-
-
-        //old way to find all tris even the onse on the cut line
-        //public List<Triangle> find_all_RightOfPlane_fromTRILIST() {
-        //    List<Triangle> temp_TRI= new List<Triangle>();
-        //    Vector3 p1Normal = _P1.GetComponent<PLANE>().PlaneNormal;
-        //    foreach (Triangle t in _TRILIST) {
-        //        bool isOnRight = false;
-        //        foreach (TriVert tv in t.TVarra) {
-        //            if (Vector3.Dot(tv.VV - _P1.transform.position, p1Normal) > 0.0f) { tv.LR = 'R'; isOnRight = true; }
-        //        }
-        //        if(isOnRight)
-        //        temp_TRI.Add(t);
-        //    }
-
-        //    return temp_TRI;
-        //}
-
 
 
         public void ADDTRI(Triangle t) {
@@ -179,7 +141,6 @@ namespace meshsplit
             List<Triangle> tri_NOT_on = new List<Triangle>();
             for (int x = 0; x < _TRILIST.Count; x++) {
              Triangle t = _TRILIST[x];
-             //   Debug.Log("checking tri" + t.ID + " " + t.obj_L_R_OP_X);
                 if (t.obj_L_R_OP_X=='O')
                 {
                     TRI_ON_path.Add(t);
@@ -188,12 +149,8 @@ namespace meshsplit
                     tri_NOT_on.Add(t);
             }
 
-            _TRILIST.Clear();
- 
+            _TRILIST.Clear(); 
             _TRILIST = tri_NOT_on;
-            nabFileWriter.Write_TriInfo(_TRILIST, "TRILIST_not_on");
-            nabFileWriter.Write_TriInfo(TRI_ON_path, "_list_on");
-
 
             return TRI_ON_path;
 

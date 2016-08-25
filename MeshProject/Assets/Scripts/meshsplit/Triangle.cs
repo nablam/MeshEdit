@@ -194,14 +194,6 @@ namespace meshsplit
             }
         }
 
-        void setOWN_OBJ_LR() {
-            if (ALLmyVertsAreOntheRigh()) { obj_L_R_OP_X = 'R'; }
-            else
-            if(ALLmyVertsAreOntheLeft()) { obj_L_R_OP_X = 'L'; }
-            else
-                obj_L_R_OP_X = 'O';
-        }
-
         int GetTriType() {
             if (seg20_crossed && seg01_crossed && !seg12_crossed) { HAS_all_3_subTRI = true; return 0; }  //HEad 0
             else
@@ -244,15 +236,6 @@ namespace meshsplit
         }
 
 
-        public bool ALLmyVertsAreOntheCutLine()
-        {
-            if (!ALLmyVertsAreOntheRigh() && !ALLmyVertsAreOntheLeft()) return true;
-            else
-                return false;
-        }
-
-    
-
         //SUB TRIANGLES T0 T1 T2
         //###########################
         //
@@ -287,6 +270,7 @@ namespace meshsplit
                 Breakup2Tris();
 
         }
+
         void Breakup_3Tris()
         { 
             //the lr of this HEAD tri will be :          
@@ -359,10 +343,6 @@ namespace meshsplit
             T1 = new Triangle(TWINTriTriVErt_1, __P1, _Not_lr);
             T2 = new Triangle(TWINTriTriVErt_2, __P1, _Not_lr);
         }
-
-
-
-
         void Breakup2Tris() {
             char ControlingLR;
             char NOTcontrollingLR='X';
@@ -443,9 +423,7 @@ namespace meshsplit
             for (int x = 0; x < 3; x++) {
 
                 sb.Append("__"+TVarra[x].ToString()+"\n"  ) ;
-            }
-            // string output = "id= " + ID + "  lrOBJ=" + objLR + T1 == null ? " t1n/a" : " " + T1;
-
+            }       
             string allverts = sb.ToString();
             string output = "id= " + ID + "  lrOBJ=" + obj_L_R_OP_X + "  isonpath:"+ IsOnCutPathBOOL.ToString() + " verts "+ allverts;
 
